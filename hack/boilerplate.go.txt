@@ -1,0 +1,1 @@
+// Auto-generated for github.com/projectkeas/crds

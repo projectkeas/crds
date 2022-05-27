@@ -1,0 +1,22 @@
+apiVersion: keas.io/v1alpha1
+kind: IngestionPolicy
+metadata:
+  name: test
+spec:
+  description: |
+    this is a test policy in which we can do something
+  policy: |
+    Hello Policy
+
+    this is me
+---
+apiVersion: keas.io/v1alpha1
+kind: IngestionPolicy
+metadata:
+  name: test2
+spec:
+  description: simple policy
+  policy: |
+    Hello Policy
+
+    this is me

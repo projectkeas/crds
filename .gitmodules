@@ -1,0 +1,3 @@
+[submodule "modules/code-generator"]
+	path = modules/code-generator
+	url = git@github.com:kubernetes/code-generator.git
