@@ -1,6 +1,4 @@
 resources:
-- "keas.io_eventtypelists.yaml"
 - "keas.io_eventtypes.yaml"
 - "keas.io_ingestionpolicies.yaml"
-- "keas.io_ingestionpolicylists.yaml"
 - "Test.yaml"

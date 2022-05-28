@@ -41,7 +41,7 @@ func (in *EventType) DeepCopyObject() runtime.Object {
 func (in *EventTypeList) DeepCopyInto(out *EventTypeList) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
-	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
+	in.ListMeta.DeepCopyInto(&out.ListMeta)
 	if in.Items != nil {
 		in, out := &in.Items, &out.Items
 		*out = make([]EventType, len(*in))
@@ -143,7 +143,7 @@ func (in *IngestionPolicyDefaults) DeepCopy() *IngestionPolicyDefaults {
 func (in *IngestionPolicyList) DeepCopyInto(out *IngestionPolicyList) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
-	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
+	in.ListMeta.DeepCopyInto(&out.ListMeta)
 	if in.Items != nil {
 		in, out := &in.Items, &out.Items
 		*out = make([]IngestionPolicy, len(*in))
