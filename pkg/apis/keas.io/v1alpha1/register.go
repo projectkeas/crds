@@ -21,9 +21,13 @@ func init() {
 	SchemeBuilder.Register(addKnownTypes)
 }
 
+func Resource(resource string) schema.GroupResource {
+	return SchemeGroupVersion.WithResource(resource).GroupResource()
+}
+
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion, &IngestionPolicy{}, &IngestionPolicyList{})
-	scheme.AddKnownTypes(SchemeGroupVersion, &EventType{})
+	scheme.AddKnownTypes(SchemeGroupVersion, &EventType{}, &EventTypeList{})
 
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil
