@@ -17,7 +17,6 @@ type EventType struct {
 	Spec EventTypeSpecification `json:"spec"`
 }
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 type EventTypeSpecification struct {
 	// +kubebuilder:validation:Pattern=`^([0-9]{1,4}){1}\.([0-9]{1,4}){1}\.([0-9]{1,4}){1}$`
 	Version string `json:"version"`

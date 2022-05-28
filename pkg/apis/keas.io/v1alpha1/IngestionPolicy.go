@@ -16,14 +16,12 @@ type IngestionPolicy struct {
 	Spec IngestionPolicySpecification `json:"spec"`
 }
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 type IngestionPolicySpecification struct {
 	Policy      string                  `json:"policy"`
 	Description string                  `json:"description,omitempty"`
 	Defaults    IngestionPolicyDefaults `json:"defaults,omitempty"`
 }
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 type IngestionPolicyDefaults struct {
 	Allow bool `json:"allow,omitempty"`
 	TTL   int  `json:"ttl,omitempty"`
