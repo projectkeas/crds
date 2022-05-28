@@ -13,6 +13,10 @@ type FakeKeasV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeKeasV1alpha1) EventTypes(namespace string) v1alpha1.EventTypeInterface {
+	return &FakeEventTypes{c, namespace}
+}
+
 func (c *FakeKeasV1alpha1) IngestionPolicies(namespace string) v1alpha1.IngestionPolicyInterface {
 	return &FakeIngestionPolicies{c, namespace}
 }

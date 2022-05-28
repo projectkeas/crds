@@ -16,7 +16,31 @@ metadata:
   name: test2
 spec:
   description: simple policy
+  defaults:
+    allow: true
+    ttl: -1
   policy: |
     Hello Policy
 
     this is me
+---
+apiVersion: keas.io/v1alpha1
+kind: EventType
+metadata:
+  name: test
+spec:
+  description: "Testing 123"
+  version: '0.0.1'
+  owner: ProjectKeas
+  type: Repository
+  sources:
+    - Gitlab
+    - Github
+  subTypes:
+    - Created
+    - Updated
+    - Deleted
+  schema: |
+    {
+      "hello": "world"
+    }

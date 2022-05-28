@@ -13,12 +13,17 @@ import (
 
 type KeasV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	EventTypesGetter
 	IngestionPoliciesGetter
 }
 
 // KeasV1alpha1Client is used to interact with features provided by the keas.io group.
 type KeasV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *KeasV1alpha1Client) EventTypes(namespace string) EventTypeInterface {
+	return newEventTypes(c, namespace)
 }
 
 func (c *KeasV1alpha1Client) IngestionPolicies(namespace string) IngestionPolicyInterface {

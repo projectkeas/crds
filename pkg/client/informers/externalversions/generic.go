@@ -38,6 +38,8 @@ func (f *genericInformer) Lister() cache.GenericLister {
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
 	// Group=keas.io, Version=v1alpha1
+	case v1alpha1.SchemeGroupVersion.WithResource("eventtypes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Keas().V1alpha1().EventTypes().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("ingestionpolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Keas().V1alpha1().IngestionPolicies().Informer()}, nil
 

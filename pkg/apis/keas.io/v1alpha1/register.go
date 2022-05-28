@@ -23,6 +23,7 @@ func init() {
 
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion, &IngestionPolicy{}, &IngestionPolicyList{})
+	scheme.AddKnownTypes(SchemeGroupVersion, &EventType{})
 
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

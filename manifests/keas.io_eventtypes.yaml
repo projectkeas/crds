@@ -5,29 +5,33 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
-  name: ingestionpolicies.keas.io
+  name: eventtypes.keas.io
 spec:
   group: keas.io
   names:
-    kind: IngestionPolicy
-    listKind: IngestionPolicyList
-    plural: ingestionpolicies
-    singular: ingestionpolicy
+    kind: EventType
+    listKind: EventTypeList
+    plural: eventtypes
+    singular: eventtype
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
-    - description: The description of the ingestion policy
+    - description: The name of the type that will be accepted by the ingestion engine
+      jsonPath: .spec.type
+      name: Event Type
+      type: string
+    - description: The owner of the event type definition
+      jsonPath: .spec.owner
+      name: Owner
+      type: string
+    - description: The description of the event type and/or schema
       jsonPath: .spec.description
       name: Description
       type: string
-    - description: The default value for allow
-      jsonPath: .spec.defaults.allow
-      name: Default Allow
-      type: boolean
-    - description: The default value for ttl
-      jsonPath: .spec.defaults.ttl
-      name: Default TTL
-      type: integer
+    - description: The version of the event type that's being stored
+      jsonPath: .spec.version
+      name: Version
+      type: string
     name: v1alpha1
     schema:
       openAPIV3Schema:
@@ -46,19 +50,33 @@ spec:
             type: object
           spec:
             properties:
-              defaults:
-                properties:
-                  allow:
-                    type: boolean
-                  ttl:
-                    type: integer
-                type: object
               description:
+                pattern: ^[\w .,&\-'"]*$
                 type: string
-              policy:
+              owner:
+                pattern: ^[A-z\-]{3,63}$
+                type: string
+              schema:
+                type: string
+              sources:
+                items:
+                  type: string
+                type: array
+              subTypes:
+                items:
+                  type: string
+                type: array
+              type:
+                pattern: ^[A-z]{3,63}$
+                type: string
+              version:
+                pattern: ^([0-9]{1,4}){1}\.([0-9]{1,4}){1}\.([0-9]{1,4}){1}$
                 type: string
             required:
-            - policy
+            - owner
+            - schema
+            - type
+            - version
             type: object
         required:
         - spec

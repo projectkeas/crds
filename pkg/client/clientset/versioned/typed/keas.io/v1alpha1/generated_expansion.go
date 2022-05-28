@@ -3,4 +3,6 @@
 
 package v1alpha1
 
+type EventTypeExpansion interface{}
+
 type IngestionPolicyExpansion interface{}
