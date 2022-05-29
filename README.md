@@ -14,7 +14,6 @@ The `EventType` resource allows you to define a versionable type that is accepte
 
 |Field|Description|Required|
 |---|---|---|
-|owner|The owner of the type, eg: ProjectKeas. Must be match regex: `^[A-z\-]{3,63}$`|true|
 |version|The version of the event|true
 |schema|A json schema that will be used to validate the incoming event|true|
 |type|The name of the event, eg: Repository. Must be match regex: `^[A-z\-]{3,63}$`. This will be case-sensitive.|true
@@ -32,7 +31,6 @@ metadata:
 spec:
   description: "This is a type for testing"
   version: '0.0.1'
-  owner: Test
   type: TestType
   sources:
     - Gitlab

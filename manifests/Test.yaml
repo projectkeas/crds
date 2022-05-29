@@ -3,36 +3,26 @@ kind: IngestionPolicy
 metadata:
   name: test
 spec:
-  description: |
-    this is a test policy in which we can do something
-  policy: |
-    Hello Policy
-
-    this is me
----
-apiVersion: keas.io/v1alpha1
-kind: IngestionPolicy
-metadata:
-  name: test2
-spec:
-  description: simple policy
+  description: Simple policy to only ingest
   defaults:
-    allow: true
+    allow: false
     ttl: -1
   policy: |
-    Hello Policy
-
-    this is me
+    allow { 
+        input.payload.lastName == "world"
+    }
+    ttl = 60 {
+        input.payload.firstName == "hello"
+    }
 ---
 apiVersion: keas.io/v1alpha1
 kind: EventType
 metadata:
   name: test
 spec:
-  description: "Testing 123"
+  description: "This is a type for testing"
   version: '0.0.1'
-  owner: ProjectKeas
-  type: Repository
+  type: TestType
   sources:
     - Gitlab
     - Github
@@ -42,5 +32,24 @@ spec:
     - Deleted
   schema: |
     {
-      "hello": "world"
+      "$id": "https://example.com/person.schema.json",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Person",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "The person's first name."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The person's last name."
+        },
+        "age": {
+          "description": "Age in years which must be equal to or greater than zero.",
+          "type": "integer",
+          "minimum": 0
+        }
+      }
     }

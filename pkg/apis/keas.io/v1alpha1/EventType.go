@@ -21,8 +21,6 @@ type EventTypeSpecification struct {
 	// +kubebuilder:validation:Pattern=`^([0-9]{1,4}){1}\.([0-9]{1,4}){1}\.([0-9]{1,4}){1}$`
 	Version string `json:"version"`
 	Schema  string `json:"schema"`
-	// +kubebuilder:validation:Pattern=`^[A-z\-]{3,63}$`
-	Owner string `json:"owner"`
 	// +kubebuilder:validation:Pattern=`^[A-z]{3,63}$`
 	EventType string   `json:"type"`
 	Sources   []string `json:"sources,omitempty"`

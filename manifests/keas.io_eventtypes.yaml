@@ -53,9 +53,6 @@ spec:
               description:
                 pattern: ^[\w .,&\-'"]*$
                 type: string
-              owner:
-                pattern: ^[A-z\-]{3,63}$
-                type: string
               schema:
                 type: string
               sources:
@@ -73,7 +70,6 @@ spec:
                 pattern: ^([0-9]{1,4}){1}\.([0-9]{1,4}){1}\.([0-9]{1,4}){1}$
                 type: string
             required:
-            - owner
             - schema
             - type
             - version
