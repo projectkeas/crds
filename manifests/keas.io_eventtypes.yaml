@@ -20,10 +20,6 @@ spec:
       jsonPath: .spec.type
       name: Event Type
       type: string
-    - description: The owner of the event type definition
-      jsonPath: .spec.owner
-      name: Owner
-      type: string
     - description: The description of the event type and/or schema
       jsonPath: .spec.description
       name: Description

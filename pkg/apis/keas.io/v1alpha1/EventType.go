@@ -7,7 +7,6 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:printcolumn:name="Event Type",type="string",JSONPath=".spec.type",description="The name of the type that will be accepted by the ingestion engine"
-// +kubebuilder:printcolumn:name="Owner",type="string",JSONPath=".spec.owner",description="The owner of the event type definition"
 // +kubebuilder:printcolumn:name="Description",type="string",JSONPath=".spec.description",description="The description of the event type and/or schema"
 // +kubebuilder:printcolumn:name="Version",type="string",JSONPath=".spec.version",description="The version of the event type that's being stored"
 type EventType struct {
