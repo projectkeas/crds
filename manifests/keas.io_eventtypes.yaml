@@ -64,7 +64,7 @@ spec:
                   type: string
                 type: array
               type:
-                pattern: ^[A-z]{3,63}$
+                pattern: ^[A-z\-]{3,63}$
                 type: string
               version:
                 pattern: ^([0-9]{1,4}){1}\.([0-9]{1,4}){1}\.([0-9]{1,4}){1}$
