@@ -86,8 +86,5 @@ echo "=== Updating Kustomization File ==="
 echo "resources:" > manifests/kustomization.yml
 for path in ./manifests/*.yaml; do
     [[ $path = "./manifests/kustomization.yml" ]] && continue;
-    [[ $path = "./manifests/Test.yaml" ]] && continue;
     echo "- \"${path:12}\"" >> manifests/kustomization.yml
 done
-
-echo "- \"Test.yaml\"" >> manifests/kustomization.yml
