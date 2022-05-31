@@ -81,10 +81,3 @@ if [ -e "${CRDS_DIR}/patches" ]; then
   find "${CRDS_DIR}/patches" -type f | xargs -i sh -c 'kustomize edit add patch --path {}'
 fi
 popd
-
-echo "=== Updating Kustomization File ==="
-echo "resources:" > manifests/kustomization.yml
-for path in ./manifests/*.yaml; do
-    [[ $path = "./manifests/kustomization.yml" ]] && continue;
-    echo "- \"${path:12}\"" >> manifests/kustomization.yml
-done
