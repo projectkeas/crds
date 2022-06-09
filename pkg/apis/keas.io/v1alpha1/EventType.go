@@ -6,9 +6,8 @@ import (
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-// +kubebuilder:printcolumn:name="Event Type",type="string",JSONPath=".spec.type",description="The name of the type that will be accepted by the ingestion engine"
+// +kubebuilder:printcolumn:name="URI",type="string",JSONPath=".spec.schemaUri",description="The schema uri that's mapped to the dataschema property of cloudevents"
 // +kubebuilder:printcolumn:name="Description",type="string",JSONPath=".spec.description",description="The description of the event type and/or schema"
-// +kubebuilder:printcolumn:name="Version",type="string",JSONPath=".spec.version",description="The version of the event type that's being stored"
 type EventType struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
@@ -17,13 +16,9 @@ type EventType struct {
 }
 
 type EventTypeSpecification struct {
-	// +kubebuilder:validation:Pattern=`^([0-9]{1,4}){1}\.([0-9]{1,4}){1}\.([0-9]{1,4}){1}$`
-	Version string `json:"version"`
-	Schema  string `json:"schema"`
-	// +kubebuilder:validation:Pattern=`^[A-z\-]{3,63}$`
-	EventType string   `json:"type"`
-	Sources   []string `json:"sources,omitempty"`
-	SubTypes  []string `json:"subTypes,omitempty"`
+	Schema string `json:"schema"`
+	// +kubebuilder:validation:Format=uri
+	SchemaUri string `json:"schemaUri"`
 	// +kubebuilder:validation:Pattern=`^[\w .,&\-'"]*$`
 	Description string `json:"description,omitempty"`
 }
