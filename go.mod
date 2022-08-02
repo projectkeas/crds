@@ -1,9 +1,9 @@
 module github.com/projectkeas/crds
 
-go 1.18
+go 1.19
 
 require (
-	k8s.io/apimachinery v0.24.2
+	k8s.io/apimachinery v0.24.3
 	k8s.io/client-go v0.24.1
 )
 
